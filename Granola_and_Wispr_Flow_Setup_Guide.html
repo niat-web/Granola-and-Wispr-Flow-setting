@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Granola and Wispr Flow Setup Guide</title>
+<style>
+/* Layout: one reading column, numbered steps, screenshots under each step. */
+:root {
+  --bg: #fbfaf7;
+  --fg: #1d1f24;
+  --muted: #5d6270;
+  --line: #e2dfd7;
+  --accent: #2f5d8a;
+  --card: #ffffff;
+  --note-bg: #eef3f8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171b;
+    --fg: #e9e8e4;
+    --muted: #a3a7b2;
+    --line: #2d3138;
+    --accent: #8fb6de;
+    --card: #1d2026;
+    --note-bg: #1b2430;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15171b;
+  --fg: #e9e8e4;
+  --muted: #a3a7b2;
+  --line: #2d3138;
+  --accent: #8fb6de;
+  --card: #1d2026;
+  --note-bg: #1b2430;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  padding-inline: 16px;
+  padding-block: 32px 64px;
+}
+main { max-width: 760px; margin: 0 auto; }
+h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 8px; text-wrap: balance; }
+h2 { font-size: 1.5rem; margin: 48px 0 8px; padding-top: 24px; border-top: 1px solid var(--line); text-wrap: balance; }
+h3 { font-size: 1.1rem; margin: 28px 0 8px; }
+p { margin: 0 0 12px; }
+.lead { color: var(--muted); margin-bottom: 24px; }
+.meta { color: var(--muted); font-size: 0.9rem; }
+.toc { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 24px 0; }
+.toc ol { margin: 0; padding-left: 20px; }
+.toc a { color: var(--accent); }
+ol.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 20px; counter-reset: s; }
+ol.steps > li {
+  counter-increment: s;
+  position: relative;
+  padding-left: 44px;
+}
+ol.steps > li::before {
+  content: counter(s);
+  position: absolute; left: 0; top: 0;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent); color: var(--bg);
+  font-weight: 700; font-size: 0.95rem;
+  display: grid; place-items: center;
+}
+figure {
+  margin: 12px 0 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+}
+figure img { display: block; width: 100%; height: auto; max-width: 100%; border-radius: 4px; }
+figcaption { color: var(--muted); font-size: 0.88rem; margin-top: 8px; }
+.note {
+  background: var(--note-bg);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: 16px 0;
+}
+.note strong { color: var(--accent); }
+code { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 0.92em; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; min-width: 420px; font-size: 0.95rem; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; }
+a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Granola and Wispr Flow: Download and Setup Guide</h1>
+<p class="lead">Step-by-step instructions for downloading and installing two AI tools. Granola takes meeting notes and needs calendar and audio access. Wispr Flow is a voice dictation tool, not a meeting recorder.</p>
+<p class="meta">Compiled from the official Granola help center and the Wispr Flow help center.</p>
+
+<nav class="toc" aria-label="Contents">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#granola">Granola: meeting notes</a>
+      <ol>
+        <li><a href="#granola-mac">Install on macOS</a></li>
+        <li><a href="#granola-win">Install on Windows</a></li>
+        <li><a href="#granola-signin">Sign in and grant permissions</a></li>
+        <li><a href="#granola-first">First meeting and home screen</a></li>
+      </ol>
+    </li>
+    <li><a href="#wispr">Wispr Flow: voice dictation</a>
+      <ol>
+        <li><a href="#wispr-mac">Install on macOS</a></li>
+        <li><a href="#wispr-win">Install on Windows</a></li>
+        <li><a href="#wispr-setup">First-run setup (both platforms)</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+
+<!-- ============================ GRANOLA ============================ -->
+<h2 id="granola">Part 1: Granola (meeting notes)</h2>
+<p>Granola listens to your meetings and writes notes for you. It works best when it can see the calendar you use for meetings.</p>
+
+<div class="note"><strong>Requirements:</strong> macOS 14 or later. A Google or Microsoft account for sign-in.</div>
+
+<h3 id="granola-mac">Install on macOS</h3>
+<ol class="steps">
+  <li>
+    <p>Go to the Granola website and download the app.</p>
+  </li>
+  <li>
+    <p>Open <strong>Granola.dmg</strong> from your Downloads folder.</p>
+  </li>
+  <li>
+    <p>Drag the <strong>Granola</strong> icon into your <strong>Applications</strong> folder.</p>
+    <figure>
+      <img src="https://mintcdn.com/granola-c3940166/s_7aq8Inb_cmqYqW/help-center/assets/setup-guide/step-1.png?fit=max&amp;auto=format&amp;n=s_7aq8Inb_cmqYqW&amp;q=85&amp;s=ae4b7780ac3c232ca546d7a0ea0d90b0" alt="Dragging the Granola app from the disk image into the Applications folder" loading="lazy">
+      <figcaption>Drag Granola into Applications.</figcaption>
+    </figure>
+  </li>
+  <li>
+    <p>Open Granola from Applications, Launchpad, or Spotlight. If macOS shows the warning <em>"Granola is from the internet. Are you sure you want to open it?"</em>, click <strong>Open</strong>. This warning is expected.</p>
+  </li>
+</ol>
+
+<h3 id="granola-win">Install on Windows</h3>
+<ol class="steps">
+  <li>
+    <p>Go to the Granola website and download the app.</p>
+  </li>
+  <li>
+    <p>Open <strong>Granola.exe</strong> from your Downloads folder.</p>
+  </li>
+  <li>
+    <p>The Granola installer runs. When it finishes, open Granola from the Start Menu.</p>
+  </li>
+</ol>
+
+<h3 id="granola-signin">Sign in and grant permissions</h3>
+<ol class="steps">
+  <li>
+    <p>On the sign-in screen, click <strong>Sign in</strong>.</p>
+    <figure>
+      <img src="https://mintcdn.com/granola-c3940166/s_7aq8Inb_cmqYqW/help-center/assets/setup-guide/step-2.png?fit=max&amp;auto=format&amp;n=s_7aq8Inb_cmqYqW&amp;q=85&amp;s=dec814221fa20f173c38da14be84077a" alt="The Granola sign-in screen" loading="lazy">
+      <figcaption>The Granola sign-in screen.</figcaption>
+    </figure>
+  </li>
+  <li>
+    <p>Your web browser opens a new tab. Sign in with Google or Microsoft. Choose a work account if you have one, since Granola works best with the calendar you use for meetings.</p>
+    <figure>
+      <img src="https://mintcdn.com/granola-c3940166/s_7aq8Inb_cmqYqW/help-center/assets/setup-guide/step-3.png?fit=max&amp;auto=format&amp;n=s_7aq8Inb_cmqYqW&amp;q=85&amp;s=fdc36de5407a3d36df542a56729ca28c" alt="The browser tab that opens for Google or Microsoft sign-in" loading="lazy">
+      <figcaption>The browser tab that opens for sign-in.</figcaption>
+    </figure>
+  </li>
+  <li>
+    <p>At the calendar permissions prompt, select <strong>Select all</strong>, then continue. Granola can then see your calendar events, including attendees, time, date, and title.</p>
+    <figure>
+      <img src="https://mintcdn.com/granola-c3940166/s_7aq8Inb_cmqYqW/help-center/assets/setup-guide/step-4.png?fit=max&amp;auto=format&amp;n=s_7aq8Inb_cmqYqW&amp;q=85&amp;s=f6c21c92590904062d7231125ecdf984" alt="The calendar permissions prompt with Select all" loading="lazy">
+      <figcaption>Calendar permissions: choose Select all.</figcaption>
+    </figure>
+  </li>
+  <li>
+    <p><strong>On macOS:</strong> when the microphone and system audio popups appear, click <strong>Allow</strong> on each.<br>
+    <strong>On Windows:</strong> audio permissions are granted automatically.</p>
+    <figure>
+      <img src="https://mintcdn.com/granola-c3940166/s_7aq8Inb_cmqYqW/help-center/assets/setup-guide/step-5.png?fit=max&amp;auto=format&amp;n=s_7aq8Inb_cmqYqW&amp;q=85&amp;s=925c55dda612f1ba3b7f8ea2c3d06cc7" alt="macOS microphone and system audio permission prompts" loading="lazy">
+      <figcaption>macOS microphone and system audio prompts: click Allow on each.</figcaption>
+    </figure>
+    <p class="meta">To review these later on a Mac: System Settings &gt; Privacy &amp; Security &gt; Microphone, or Screen &amp; System Audio Recording. On Windows: Settings &gt; Privacy &amp; Security &gt; Microphone.</p>
+  </li>
+</ol>
+
+<h3 id="granola-first">First meeting and home screen</h3>
+<ol class="steps">
+  <li>
+    <p>After your first sign-in, a two-minute demo meeting appears, with a tutorial from co-founder Sam. It appears only once. To watch it again, open <code>grano.la/demo</code> on a desktop with the Granola app installed, or use <code>granola.ai/demo-meeting</code>.</p>
+    <figure>
+      <img src="https://mintcdn.com/granola-c3940166/s_7aq8Inb_cmqYqW/help-center/assets/setup-guide/step-6.png?fit=max&amp;auto=format&amp;n=s_7aq8Inb_cmqYqW&amp;q=85&amp;s=f2c9976dcf3e21a0e427bb2073f73aa4" alt="The demo meeting, ready to play in Granola" loading="lazy">
+      <figcaption>The demo meeting, ready to play.</figcaption>
+    </figure>
+  </li>
+  <li>
+    <p>The home view shows your upcoming meetings and the demo note.</p>
+    <figure>
+      <img src="https://mintcdn.com/granola-c3940166/s_7aq8Inb_cmqYqW/help-center/assets/setup-guide/step-7.png?fit=max&amp;auto=format&amp;n=s_7aq8Inb_cmqYqW&amp;q=85&amp;s=4de945317096d98b2ffbf1ec2ad9f4b3" alt="The Granola home view with upcoming meetings and the demo note" loading="lazy">
+      <figcaption>The Granola home view.</figcaption>
+    </figure>
+  </li>
+</ol>
+
+<div class="note"><strong>Note:</strong> the official setup page does not describe a separate "start recording" button. Check the Granola help center for how recording starts in your meetings.</div>
+
+<!-- ============================ WISPR FLOW ============================ -->
+<h2 id="wispr">Part 2: Wispr Flow (voice dictation)</h2>
+<p>Wispr Flow turns your speech into text in any app. You hold a shortcut, speak, and release. It is not a meeting recorder, so it will not take notes from a call.</p>
+
+<div class="note"><strong>Requirements:</strong> macOS 12.0 (Monterey) or later on a Mac. Check your version and chip under <strong>Apple menu &gt; About This Mac</strong>. Apple Silicon and Intel Macs need different downloads.</div>
+
+<h3 id="wispr-mac">Install on macOS</h3>
+<ol class="steps">
+  <li><p>Go to <strong>wisprflow.ai</strong> and download the build that matches your Mac's chip.</p></li>
+  <li><p>Open the downloaded <strong>.dmg</strong> file.</p></li>
+  <li><p>Drag the <strong>Wispr Flow</strong> icon onto the <strong>Applications</strong> folder, then close the installer window.</p></li>
+  <li><p>Open Wispr Flow from Applications. On a fresh install, a menu bar icon appears on the right side of the menu bar.</p>
+    <div class="note"><strong>Keep the name:</strong> the app must stay named <strong>Wispr Flow.app</strong> and sit directly in <code>/Applications</code>, <code>~/Applications</code>, or <code>/System/Applications</code>. A renamed app, or one inside a subfolder, will not launch.</div>
+  </li>
+</ol>
+
+<h3 id="wispr-win">Install on Windows</h3>
+<ol class="steps">
+  <li><p>Go to <strong>wisprflow.ai</strong> and download the Windows installer.</p></li>
+  <li><p>Run the installer.</p></li>
+  <li><p>Launch Wispr Flow from the Start menu. A system tray icon appears when it is running.</p></li>
+</ol>
+
+<h3 id="wispr-setup">First-run setup (both platforms)</h3>
+<ol class="steps">
+  <li>
+    <p>Click <strong>Sign in via browser</strong>. You can sign in with Google, Apple, Microsoft, SSO, or email and password. If the session times out, click <strong>Sign in via browser</strong> again.</p>
+  </li>
+  <li>
+    <p><strong>Permissions.</strong> On Mac, click <strong>Allow</strong> on <em>"Allow Flow to insert spoken words"</em> (Accessibility) and on <em>"Allow Flow to use your microphone"</em> (Microphone), then click <strong>Continue</strong>. On Windows, you need microphone access. If you denied a prompt, enable Flow under Privacy &amp; Security in System Settings (Mac) or Settings (Windows).</p>
+    <p class="meta">Optional, Mac only: Input Monitoring under System Settings &gt; Privacy &amp; Security, only if you want Caps Lock alone as your shortcut.</p>
+  </li>
+  <li>
+    <p>Answer the setup questions and review the Privacy notice. If you choose "Other," type a short description to continue.</p>
+  </li>
+  <li>
+    <p><strong>Test your microphone.</strong> Speak, and confirm the bars rise. To switch inputs, use <strong>Change microphone</strong> or <strong>Find the right mic for you</strong>. If you see "No microphone found," connect a mic in Sound Settings. If you see "In use by another app," check Sound Settings or restart Flow.</p>
+  </li>
+  <li>
+    <p><strong>Set your shortcut.</strong> Click <strong>Edit shortcut</strong>, then choose <strong>Push to talk</strong> or <strong>Hands-free</strong>. Macs with an fn key default to fn. Other machines default to Ctrl+Opt.</p>
+  </li>
+  <li>
+    <p><strong>Choose languages.</strong> Select the dictation languages you use, or leave automatic detection on. You can mix languages in one sentence.</p>
+  </li>
+  <li>
+    <p><strong>Practice.</strong> Press the shortcut keys together, speak, and release as instructed. You can skip any demo. On Windows, a checkmark finishes dictation and X cancels it.</p>
+  </li>
+  <li>
+    <p><strong>Finish.</strong> Choose a data preference, then click <strong>Explore Wispr Flow</strong>. Setup is complete when the Flow Hub opens.</p>
+    <div class="note"><strong>Data setting:</strong> "Improve the model for everyone" is on by default for Free and Pro accounts. Choosing "Don't use my data for training" does not turn off cloud storage of dictations or delete local history. Check each setting separately.</div>
+  </li>
+</ol>
+
+<p>After setup, hold your shortcut in any app and speak. Double-tap it for Hands-free mode.</p>
+
+<h2>Troubleshooting</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Problem</th><th>What to do</th></tr></thead>
+  <tbody>
+    <tr><td>Granola says "from the internet" and will not open (Mac)</td><td>Click <strong>Open</strong>. This warning is expected.</td></tr>
+    <tr><td>Permission prompt was denied (Granola or Wispr Flow)</td><td>Enable the app under Privacy &amp; Security in System Settings (Mac) or Settings (Windows).</td></tr>
+    <tr><td>Wispr Flow does not launch</td><td>Confirm the app is named Wispr Flow.app and is in an Applications folder.</td></tr>
+    <tr><td>Wispr Flow shows "No microphone found"</td><td>Connect a microphone, then check Sound Settings.</td></tr>
+    <tr><td>Wispr Flow sign-in times out</td><td>Click <strong>Sign in via browser</strong> again.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p class="meta">Sources: Granola help center, "Setting up Granola for the first time" (docs.granola.ai); Wispr Flow help center, "How to install Wispr Flow on Mac" and "Setup Guide" (docs.wisprflow.ai). Screenshots for Granola are hosted by Granola and load from its servers when this file is opened online. Wispr Flow's official pages have no screenshots, so none are included for it.</p>
+
+</main>
+</body>
+</html>
